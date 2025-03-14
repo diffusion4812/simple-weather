@@ -18,7 +18,7 @@ jobs:
         id: zip-name
         run: |
           # Generate a unique name using the current date and time
-          ZIP_NAME="simple-weather_$(date +'%Y-%m-%d_%H-%M-%S')"
+          ZIP_NAME="simple-weather_$(date +'%Y-%m-%d_%H-%M-%S').zip"
           echo "Generated zip file name: $ZIP_NAME"
           echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
 
