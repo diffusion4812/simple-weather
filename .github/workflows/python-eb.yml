@@ -1,0 +1,39 @@
+name: Python-EB
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  ELASTIC_BEANSTALK_NAME: simple-weather
+  ELASTIC_BEANSTALK_ENV_NAME: simple-weather-env
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Pack
+      run: |
+        cd ${{github.run_id}}
+        zip -r ../${{github.run_id}}.zip .
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4.3.3
+      with: 
+        name: deploy-files
+        path: ${{github.run_id}}.zip
+  deploy:
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - uses: actions/download-artifact@v4.1.7
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: us-east-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
