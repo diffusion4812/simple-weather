@@ -34,7 +34,7 @@ h2 {
 
 @media only screen and (max-width: 850px) {
   .api_endpoint_collapsible {
-    width: 85%;
+    width: 95%;
   }
 }
 
@@ -69,7 +69,6 @@ h2 {
   margin: auto;
   padding: 0px;
   background-color: #c5c5c5;
-  width: 50%;
   max-height: 0;
   overflow: hidden;
   transition: all 0.2s ease-out;
@@ -79,5 +78,4 @@ h2 {
   padding: 15px;
   border: 1px solid black;
   border-radius: 5px;
-  width: 60%;
 }
