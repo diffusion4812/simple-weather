@@ -2,38 +2,32 @@ name: Python-EB
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-env:
-  ELASTIC_BEANSTALK_NAME: simple-weather
-  ELASTIC_BEANSTALK_ENV_NAME: simple-weather-env
+    branches:
+      - main  # Trigger on push to the main branch
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  build:
+  zip-files:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Pack
-      run: |
-        cd ${{github.run_id}}
-        zip -r ../${{github.run_id}}.zip .
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v4.3.3
-      with: 
-        name: deploy-files
-        path: ${{github.run_id}}.zip
-  deploy:
-
-    runs-on: ubuntu-latest
-    needs: build
 
     steps:
-    - uses: actions/download-artifact@v4.1.7
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-region: us-east-1
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate zip file name
+        id: zip-name
+        run: |
+          # Generate a unique name using the current date and time
+          ZIP_NAME="simple-weather_$(date +'%Y-%m-%d_%H-%M-%S').zip"
+          echo "Generated zip file name: $ZIP_NAME"
+          echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
+
+      - name: Zip selected files
+        run: |
+          # Use the generated zip file name
+          zip -r ${{ steps.zip-name.outputs.zip_name }} application.py staticcss statichtml .ebextensions
+
+      - name: Upload zip file as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ steps.zip-name.outputs.zip_name }}
