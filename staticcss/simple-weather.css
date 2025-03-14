@@ -69,14 +69,15 @@ h2 {
   margin: auto;
   padding: 0px;
   background-color: #c5c5c5;
-  width: 80%;
+  width: 50%;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .api_endpoint_content_active {
   padding: 15px;
   border: 1px solid black;
   border-radius: 5px;
+  width: 60%;
 }
