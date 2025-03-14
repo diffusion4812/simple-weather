@@ -29,16 +29,18 @@ jobs:
           echo "Generated artifact file name: $ARTIFACT_NAME"
           echo "artifact_name=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
   
+      - name: Zip selected files
+        run: |
+          # Use the generated zip file name
+          zip -r ${{ steps.artifact-name.outputs.artifact_name }} application.py staticcss statichtml .ebextensions
+          echo "Zipped files to ${{ steps.artifact-name.outputs.artifact_name }}.zip"
+  
       - name: Upload zip file as artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.artifact-name.outputs.artifact_name }}
-          include-hidden-files: true
-          path: |
-              application.py
-              staticcss/
-              statichtml/
-              .ebextensions/
+          path: ${{ steps.artifact-name.outputs.artifact_name }}
+  
 
   deploy:
     runs-on: ubuntu-latest
