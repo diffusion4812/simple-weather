@@ -21,7 +21,7 @@ h2 {
   display: block;
   background-color: #c5c5c5;
   margin: auto;
-  width: 50%;
+  width: 55%;
   font-size: 1.2em;
   border: 1px solid black;
   border-radius: 5px;
@@ -30,6 +30,12 @@ h2 {
   cursor: pointer;
   padding: 10px;
   text-align: left;
+}
+
+@media only screen and (max-width: 850px) {
+  .api_endpoint_collapsible {
+    width: 85%;
+  }
 }
 
 .api_endpoint_collapsible_active, .api_endpoint_collapsible:hover {
@@ -43,12 +49,6 @@ h2 {
 
 .api_endpoint_collapsible_active:after {
   content: "\2212";
-}
-
-@media screen and (max-width: 480px) {
-  .api_endpoint {
-      width: 80%;
-  }
 }
 
 .api_endpoint_GET {
