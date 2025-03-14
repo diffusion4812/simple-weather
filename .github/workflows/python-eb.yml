@@ -26,9 +26,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.artifact-name.outputs.artifact_name }}
+          include-hidden-files: true
           path: |
-              "application.py"
-              "staticcss/"
-              "statichtml/"
-              ".ebextensions/"
-
+              application.py
+              staticcss/
+              statichtml/
+              .ebextensions/
