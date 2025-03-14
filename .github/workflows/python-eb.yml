@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Generate zip file name
         id: zip-name
@@ -28,6 +28,6 @@ jobs:
           zip -r ${{ steps.zip-name.outputs.zip_name }} application.py staticcss statichtml .ebextensions
 
       - name: Upload zip file as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.zip-name.outputs.zip_name }}
