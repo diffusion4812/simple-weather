@@ -28,6 +28,6 @@ jobs:
           name: ${{ steps.artifact-name.outputs.artifact_name }}
           path: |
               application.py
-              staticcss
-              statichtml
-              .ebextensions
+              staticcss/
+              statichtml/
+              .ebextensions/
