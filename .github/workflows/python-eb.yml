@@ -14,21 +14,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate zip file name
-        id: zip-name
+      - name: Generate artifact file name
+        id: artifact-name
         run: |
           # Generate a unique name using the current date and time
-          ZIP_NAME="simple-weather_$(date +'%Y-%m-%d_%H-%M-%S').zip"
-          echo "Generated zip file name: $ZIP_NAME"
-          echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
-
-      - name: Zip selected files
-        run: |
-          # Use the generated zip file name
-          zip -r ${{ steps.zip-name.outputs.zip_name }} application.py staticcss statichtml .ebextensions
-
+          ARTIFACT_NAME="simple-weather_$(date +'%Y-%m-%d_%H-%M-%S')"
+          echo "Generated artifact file name: $ARTIFACT_NAME"
+          echo "artifact_name=$ARTIFACT_NAME" >> $GITHUB_OUTPUT
+  
       - name: Upload zip file as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.zip-name.outputs.zip_name }}
-          path: ${{ steps.zip-name.outputs.zip_name }}
+          name: ${{ steps.artifact-name.outputs.artifact_name }}
+          path: application.py staticcss statichtml .ebextensions
