@@ -28,7 +28,7 @@ def run_api_query(querystring):
 def lambda_handler(event, context):
 
     if event['path'] in api_endpoints:
-        response = run_api_query(event['queryStringParameters'])
+        response = run_api_query(event['queryStringParameters'] if event['queryStringParameters'] else {})
     else:
         response = {
             'body': json.dumps({'message': 'You did not provide a valid lon and lat'}),
