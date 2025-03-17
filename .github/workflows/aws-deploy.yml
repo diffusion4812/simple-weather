@@ -8,10 +8,11 @@ on:
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  deploy:
+  deploy-S3:
+    name: deploy files to S3 bucket
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source code
         uses: actions/checkout@v2
       - name: Setup AWS CLI
         uses: aws-actions/configure-aws-credentials@v4
@@ -22,3 +23,18 @@ jobs:
       - name: Sync files to S3 bucket
         run: |
           aws s3 sync S3 s3://wx-serv --delete
+
+  deploy-Lambda:
+    name: deploy Lambda function
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Deploy Lambda function
+        uses: appleboy/lambda-action@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: eu-west-2
+          function_name: lambda_handler
+          source: Lambda/lambda_function.py
