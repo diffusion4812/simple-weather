@@ -37,7 +37,8 @@ def lambda_handler(event, context):
         }
 
     return {
-        'statusCode': response['code'],
+        'isBase64Encoded': False,
+        'statusCode': int(response['code']),
         'headers': {
             'Content-Type': 'application/json'
         },
