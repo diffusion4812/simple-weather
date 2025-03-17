@@ -17,10 +17,10 @@ api_endpoints = ['/api/temperature',
 def run_api_query(querystring):
   if querystring.get('lon') and querystring.get('lat'):
     response_content = json.dumps({'message': 'You requested weather information for lon={}, lat={}'.format(querystring['lon'][0], querystring['lat'][0])})
-    response_code = '200 OK'
+    response_code = '200'
   else:
     response_content = json.dumps({'message': 'You did not provide a valid lon and lat'})
-    response_code = '400 Bad Request'
+    response_code = '400'
 
   response = {'body': response_content, 'code': response_code}
   return response
@@ -33,7 +33,7 @@ def lambda_handler(event, context):
     else:
         response = {
             'body': json.dumps({'message': 'You did not provide a valid lon and lat'}),
-            'code': '400 Bad Request'
+            'code': '400'
         }
 
     return {
