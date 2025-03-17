@@ -10,7 +10,7 @@ log_level = os.environ.get('LOG_LEVEL', 'INFO')
 logger.setLevel(log_level)
 
 def get_temperature(lon, lat):
-    response_content = json.dumps({'temperature': 25.0})
+    response_content = json.dumps({'temperature': str("{:0.5f}".format(25.0))})
     response_code = '200'
     return response_content, response_code
 
