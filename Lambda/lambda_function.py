@@ -10,7 +10,7 @@ log_level = os.environ.get('LOG_LEVEL', 'INFO')
 logger.setLevel(log_level)
 
 def lambda_handler(event, context):
-    body = "hello"
+    body = json.dumps(event)
     return {
         'statusCode': 200,
         'body': body
