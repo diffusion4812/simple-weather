@@ -1,0 +1,111 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/simple-weather.css">
+    <title>Simple Weather Service</title>
+</head>
+<body>
+    <h1>Simple Weather Service API Reference</h1>
+    <p>
+        This service provides weather information for given WGS84 coordinates.
+    </p>
+    <h2>Usage:</h2>
+    <button class="api_endpoint_collapsible">
+        <span class="api_endpoint_GET">GET</span>
+        <span><code>/api/temperature</code></span>
+        <span class="api_endpoint_collapsible_after"></span>
+    </button>
+    <div class="api_endpoint_content">
+        <p class="api_endpoint_content_header">Responses:</p>
+        <p>HTTP 200 - success<br>Schema (application/json):</p>
+        <pre><code>
+            {
+                "temperature": (temperature in Celsius)
+            }
+        </code></pre>
+        <p>HTTP 400 - failure<br>Schema (application/json):</p>
+        <pre><code>
+            {
+                "error": "Request failed"
+            }
+        </code></pre>
+    </div>
+    <button class="api_endpoint_collapsible">
+        <span class="api_endpoint_GET">GET</span>
+        <span><code>/api/windspeed</code></span>
+        <span class="api_endpoint_collapsible_after"></span>
+    </button>
+    <div class="api_endpoint_content">
+        <p class="api_endpoint_content_header">Responses:</p>
+        <p>HTTP 200 - success<br>Schema (application/json):</p>
+        <pre><code>
+            {
+                "windspeed": (wind speed in m/s),
+                "bearing": (wind bearing in degrees - wind is heading in THIS direction)
+            }
+        </code></pre>
+        <p>HTTP 400 - failure<br>Schema (application/json):</p>
+        <pre><code>
+            {
+                "error": "Request failed"
+            }
+        </code></pre>
+    </div>
+    <button class="api_endpoint_collapsible">
+        <span class="api_endpoint_GET">GET</span>
+        <span><code>/api/humidity</code></span>
+        <span class="api_endpoint_collapsible_after"></span>
+    </button>
+    <div class="api_endpoint_content">
+        <p class="api_endpoint_content_header">Responses:</p>
+        <p>HTTP 200 - success<br>Schema (application/json):</p>
+        <pre><code>
+            {
+                "humidity": (percentage humidity)
+            }
+        </code></pre>
+        <h4>HTTP 400 - failure<br>Schema (application/json):</h4>
+        <pre><code>
+            {
+                "error": "Request failed"
+            }
+        </code></pre>
+    </div>
+    <button class="api_endpoint_collapsible">
+        <span class="api_endpoint_GET">GET</span>
+        <span><code>/api/pressure</code></span>
+        <span class="api_endpoint_collapsible_after"></span>
+    </button>
+    <div class="api_endpoint_content">
+        <p class="api_endpoint_content_header">Responses:</p>
+        <h4>HTTP 200 - success<br>Schema (application/json):</h4>
+        <pre><code>
+            {
+                "pressure": (pressure in hPa)
+            }
+        </code></pre>
+        <h4>HTTP 400 - failure<br>Schema (application/json):</h4>
+        <pre><code>
+            {
+                "error": "Request failed"
+            }
+        </code></pre>
+    </div>
+    <script>
+        var coll = document.getElementsByClassName("api_endpoint_collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("api_endpoint_collapsible_active");
+            var content = this.nextElementSibling;
+            content.classList.toggle("api_endpoint_content_active");
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+    </script>
+</body></html>
