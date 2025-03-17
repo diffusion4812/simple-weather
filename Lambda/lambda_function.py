@@ -1,12 +1,11 @@
-import json, os, logging
+import json, os, logging, boto3
+from boto3.dynamodb.conditions import Key, Attr
 
-# Initialize the logger
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('wx-serv-data')
+
 logger = logging.getLogger()
-
-# Get the log level from the environment variable and default to INFO if not set
 log_level = os.environ.get('LOG_LEVEL', 'INFO')
-
-# Set the log level
 logger.setLevel(log_level)
 
 def get_temperature(lon, lat):
@@ -57,6 +56,8 @@ def lambda_handler(event, context):
             'body': json.dumps({'message': 'endpoint not found'}),
             'code': '400'
         }
+
+    response['body'] = str(table.creation_date_time)
 
     return {
         'isBase64Encoded': False,
