@@ -60,7 +60,7 @@ def lambda_handler(event, context):
     results = table.query(
         KeyConditionExpression=Key('station_id').eq('ZVDB')
     )
-    items = response.items()
+    items = results.items()
 
     response['body'] = json.dumps(items)
 
