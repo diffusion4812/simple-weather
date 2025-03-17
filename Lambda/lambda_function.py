@@ -10,14 +10,8 @@ log_level = os.environ.get('LOG_LEVEL', 'INFO')
 logger.setLevel(log_level)
 
 def lambda_handler(event, context):
-    body = json.dumps(event['queryStringParameters'])
-    if event['queryStringParameters'].get('lon') and event['queryStringParameters'].get('lat'):
-        body = json.dumps({'message':'You requested information for lon={}, lat={}'.format(event['queryStringParameters']['lon'], event['queryStringParameters']['lat'])})
-        statusCode = 200
-    else:
-        body = json.dumps({'message':'You did not provide a valid lon and lat'})
-        statusCode = 400
+    body = "hello"
     return {
-        'statusCode': statusCode,
+        'statusCode': 200,
         'body': body
     }
