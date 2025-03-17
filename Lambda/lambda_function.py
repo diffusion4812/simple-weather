@@ -57,7 +57,12 @@ def lambda_handler(event, context):
             'code': '400'
         }
 
-    response['body'] = str(table.creation_date_time)
+    results = table.query(
+        KeyConditionExpression=Key('station_id').eq('ZVDB')
+    )
+    items = response.items()
+
+    response['body'] = json.dumps(items)
 
     return {
         'isBase64Encoded': False,
