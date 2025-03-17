@@ -26,7 +26,6 @@ def run_api_query(querystring):
   return response
 
 def lambda_handler(event, context):
-    body = json.dumps(event['queryStringParameters'])
 
     if event['path'] in api_endpoints:
         response = run_api_query(event['queryStringParameters'])
