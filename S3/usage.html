@@ -78,18 +78,14 @@
     <div class="api_endpoint_content">
         <p class="api_endpoint_content_header">Responses:</p>
         <p>HTTP 200 - success<br>Schema (application/json):</p>
-        <pre><code>
-{
+        <pre><code>{
     "speed": (wind speed in m/s),
     "bearing": (wind bearing in degrees - wind is heading in THIS direction)
-}
-        </code></pre>
+}</code></pre>
         <p>HTTP 400 - failure<br>Schema (application/json):</p>
-        <pre><code>
-{
+        <pre><code>{
     "error": "Request failed"
-}
-        </code></pre>
+}</code></pre>
     </div>
     <button class="api_endpoint_collapsible">
         <span class="api_endpoint_GET">GET</span>
@@ -99,17 +95,13 @@
     <div class="api_endpoint_content">
         <p class="api_endpoint_content_header">Responses:</p>
         <p>HTTP 200 - success<br>Schema (application/json):</p>
-        <pre><code>
-{
+        <pre><code>{
     "humidity": (percentage humidity)
-}
-        </code></pre>
+}</code></pre>
         <h4>HTTP 400 - failure<br>Schema (application/json):</h4>
-        <pre><code>
-{
+        <pre><code>{
     "error": "Request failed"
-}
-        </code></pre>
+}</code></pre>
     </div>
     <button class="api_endpoint_collapsible">
         <span class="api_endpoint_GET">GET</span>
@@ -119,17 +111,13 @@
     <div class="api_endpoint_content">
         <p class="api_endpoint_content_header">Responses:</p>
         <h4>HTTP 200 - success<br>Schema (application/json):</h4>
-        <pre><code>
-{
+        <pre><code>{
     "pressure": (pressure in hPa)
-}
-        </code></pre>
+}</code></pre>
         <h4>HTTP 400 - failure<br>Schema (application/json):</h4>
-        <pre><code>
-{
+        <pre><code>{
     "error": "Request failed"
-}
-        </code></pre>
+}</code></pre>
     </div>
     <script>
         var coll = document.getElementsByClassName("api_endpoint_collapsible");
