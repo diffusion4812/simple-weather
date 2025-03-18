@@ -15,6 +15,8 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
+  const position = { lat: 50.4440481, lng: -5.6159588 };
+  
   // The map, centered at Uluru
   map = new Map(document.getElementById("map"), {
     zoom: 4,
