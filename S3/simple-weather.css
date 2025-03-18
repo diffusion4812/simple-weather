@@ -118,9 +118,9 @@ pre {
   text-align: left;
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1000px) {
   .api_endpoint_collapsible {
-    width: 95%;
+    width: 100%;
   }
 
   .stations-row {
