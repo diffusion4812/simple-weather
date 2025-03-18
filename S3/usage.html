@@ -11,7 +11,7 @@
 <body>
     <h1>Simple Weather Service API Reference</h1>
     <div>
-        This service provides weather information for given weather station IDs:
+        <p>This service provides weather information for given weather station IDs:</p>
         <div class="stations-row">
             <div class="stations-column-table">
                 <table class="stations-table">
@@ -54,6 +54,9 @@
         </div>
     </div>
     <h2>Usage:</h2>
+    <p>REST API requests to the listed endpoints with a valid <code>&lt;station_id&gt;</code> will return the requested data.</p>
+    <p>For example, to get the temperature at station <code>SILJ</code>, make a GET request to <code>/api/temperature?station_id=SILJ</code>.</p>
+    <p>Responses are in JSON format.</p>
     <button class="api_endpoint_collapsible">
         <span class="api_endpoint_GET">GET</span>
         <span><code>/api/temperature</code></span>
