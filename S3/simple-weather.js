@@ -10,32 +10,30 @@ const stations={
 };
 
 async function initMap() {
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  const position = { lat: 50.4440481, lng: -5.6159588 };
+    const position = { lat: 50.4440481, lng: -5.6159588 };
 
-  // The map, centered at Uluru
-  map = new Map(document.getElementById("map"), {
-    zoom: 8,
-    disableDefaultUI: true,
-    center: position,
-    mapId: "26f1fd542349271f",
-  });
-
-  for (let station in stations) {
-    const stationTag = document.createElement("div");
-    stationTag.className = "station-tag";
-    stationTag.textContent = station;
-
-    const marker = new AdvancedMarkerElement({
-      map: map,
-      position: stations[station],
-      content: stationTag,
+    // The map, centered at Uluru
+    map = new Map(document.getElementById("map"), {
+        zoom: 8,
+        disableDefaultUI: true,
+        center: position,
+        mapId: "26f1fd542349271f",
     });
-  }
+
+    for (let station in stations) {
+        const stationTag = document.createElement("div");
+        stationTag.className = "station-tag";
+        stationTag.textContent = station;
+
+        const marker = new AdvancedMarkerElement({
+            map: map,
+            position: stations[station],
+            content: stationTag,
+        });
+    }
 }
 
 window.initMap = initMap;
