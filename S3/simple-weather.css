@@ -170,10 +170,6 @@ pre {
 }
 
 @media only screen and (max-width: 1000px) {
-  .api_endpoint_collapsible {
-    width: 100%;
-  }
-
   .stations-row {
     display: flex;
     flex-direction: column;
@@ -182,5 +178,14 @@ pre {
 
   .stations-column-table {
     margin: 0px 0px 50px 0px;
+  }
+
+  .api_endpoint_collapsible {
+    width: 100%;
+  }
+
+  .api_endpoint_content
+  {
+    width: 100%;
   }
 }
