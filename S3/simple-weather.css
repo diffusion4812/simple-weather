@@ -71,7 +71,6 @@ h2 {
   background-color: #c5c5c5;
   max-height: 0;
   overflow: hidden;
-  width: 55%;
   transition: all 0.2s ease-out;
 }
 
