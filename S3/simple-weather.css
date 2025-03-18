@@ -111,7 +111,7 @@ pre {
   width: 55%;
   font-size: 1.2em;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
   cursor: pointer;
@@ -175,5 +175,5 @@ pre {
 .api_endpoint_content_active {
   padding: 15px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
 }
