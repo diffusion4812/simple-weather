@@ -29,6 +29,14 @@ pre {
   margin-bottom: 5px;
 }
 
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
 .api_endpoint_collapsible {
   display: block;
   background-color: #c5c5c5;
