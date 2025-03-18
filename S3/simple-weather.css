@@ -29,12 +29,16 @@ pre {
   margin-bottom: 5px;
 }
 
-.row {
+.stations-row {
   display: flex;
 }
 
-.column {
-  flex: 50%;
+.stations-column-table {
+  flex: 30%;
+}
+
+.stations-column-ma {
+  flex: 70%;
 }
 
 .styled-table {
