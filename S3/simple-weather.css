@@ -101,6 +101,10 @@ pre {
   background-color: #f3f3f3;
 }
 
+.stations-table tr:hover {
+  background-color: #f1f1f1;
+}
+
 .api_endpoint_collapsible {
   display: block;
   background-color: #c5c5c5;
