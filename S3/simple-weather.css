@@ -10,11 +10,15 @@ body {
 h1 {
   font-size: 2em;
   font-weight: normal;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 h2 {
   font-size: 1.5em;
   font-weight: normal;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 p {
@@ -31,11 +35,13 @@ pre {
 
 .stations-row {
   display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .stations-column-table {
   flex: 30%;
-  margin-right: 50px;
+  margin: 0px 50px 0px 0px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
