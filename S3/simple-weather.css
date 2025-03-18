@@ -99,6 +99,7 @@ pre {
 .stations-table th,
 .stations-table td {
     padding: 12px 15px;
+    width:50%;
 }
 
 .stations-table tbody tr {
