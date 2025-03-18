@@ -30,7 +30,7 @@ p {
   font-size: 1em;
   margin-top: 5px;
   margin-bottom: 5px;
-  padding: 10px;
+  padding-inline: 10px;
 }
 
 pre {
@@ -38,7 +38,8 @@ pre {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 25px;
-  padding: 10px;
+  padding: 0px;
+  padding-bottom: 10px;
 }
 
 .stations-row {
@@ -173,6 +174,13 @@ pre {
 }
 
 @media only screen and (max-width: 1000px) {
+  body {
+    margin: 25px;
+  }
+  p {
+    text-justify: justify;
+  }
+
   .stations-row {
     display: flex;
     flex-direction: column;
