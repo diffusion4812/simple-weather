@@ -2,6 +2,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://wp71kyut29.execute-api.eu-west-2.amazonaws.com/prod/simple-weather.css">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYRKKD1MSM4QdEYyuXOJX23vqxUKTgzx8&callback=console.debug&libraries=maps,marker&v=beta"></script>
     <title>Simple Weather Service</title>
 </head>
 <body>
@@ -40,7 +41,9 @@
                 </table>
             </div>
         <div class="stations-column-map">
-            asdasd
+            <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
+                <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location"></gmp-advanced-marker>
+              </gmp-map>
         </div>
     </div>
     <h2>Usage:</h2>
