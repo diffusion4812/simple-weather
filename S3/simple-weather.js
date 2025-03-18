@@ -26,10 +26,14 @@ async function initMap() {
   });
 
   for (let station in stations) {
+    const stationTag = document.createElement("div");
+    stationTag.className = "station-tag";
+    stationTag.textContent = station;
+
     const marker = new AdvancedMarkerElement({
       map: map,
       position: stations[station],
-      title: station,
+      content: stationTag,
     });
   }
 }
