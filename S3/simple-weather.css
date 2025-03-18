@@ -17,6 +17,12 @@ h2 {
   font-weight: normal;
 }
 
+p {
+  font-size: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .api_endpoint_collapsible {
   display: block;
   background-color: #c5c5c5;
@@ -61,7 +67,6 @@ h2 {
   padding: 0px;
   background-color: #c5c5c5;
   width: 80%;
-  max-height: 0;
   overflow: hidden;
 }
 
