@@ -97,10 +97,6 @@ pre {
   border-bottom: 1px solid #dddddd;
 }
 
-.stations-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
-}
-
 .stations-table tbody tr:hover {
   background-color: #f1f1f1;
 }

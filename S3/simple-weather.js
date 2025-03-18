@@ -42,7 +42,8 @@ async function initMap() {
 }
 
 export function wx_tr_click(stationId) {
-    console.log(stationId);
+    wx_map.setCenter(stations[stationId]);
+    wx_map.setZoom(12);
 }
 
 initMap();
