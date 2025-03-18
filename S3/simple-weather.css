@@ -66,6 +66,8 @@ p {
   margin: auto;
   padding: 0px;
   background-color: #c5c5c5;
+  font-size: 1.2em;
+  font-weight: bold;
   width: 80%;
   overflow: hidden;
 }
