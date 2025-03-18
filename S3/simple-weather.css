@@ -49,6 +49,7 @@ pre {
 .stations-column-map {
   flex: 70%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
 }
 
 #map {
@@ -130,6 +131,7 @@ pre {
 
   .stations-column-table {
     margin: 0px 0px 50px 0px;
+  }
 }
 
 .api_endpoint_collapsible_active, .api_endpoint_collapsible:hover {
