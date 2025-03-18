@@ -39,6 +39,7 @@ async function initMap() {
 }
 
 export function wx_tr_click(stationId) {
+    wx_map.setZoom(9);
     wx_map.panTo(stations[stationId]);
     wx_map.setZoom(12);
 }
