@@ -41,7 +41,7 @@ async function initMap() {
     }
 }
 
-function wx_tr_click() {
+export function wx_tr_click() {
     console.log("click");
     console.log(this);
 }
