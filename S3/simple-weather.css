@@ -169,7 +169,7 @@ pre {
   background-color: #c5c5c5;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.2s ease-out;
+  transition: max-height 0.3s ease-out;
 }
 
 .api_endpoint_content_active {
