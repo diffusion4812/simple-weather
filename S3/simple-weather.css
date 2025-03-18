@@ -23,6 +23,12 @@ p {
   margin-bottom: 5px;
 }
 
+pre {
+  font-size: 1em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .api_endpoint_collapsible {
   display: block;
   background-color: #c5c5c5;
