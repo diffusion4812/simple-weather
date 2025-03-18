@@ -1,5 +1,5 @@
 // Initialize and add the map
-let map;
+let wx_map;
 
 const stations={
     "SILJ": {lat: 50.211441, lng: -5.480760},
@@ -16,7 +16,7 @@ async function initMap() {
     const position = { lat: 50.4440481, lng: -5.6159588 };
 
     // The map, centered at Uluru
-    map = new Map(document.getElementById("map"), {
+    wx_map = new Map(document.getElementById("map"), {
         zoom: 8,
         disableDefaultUI: true,
         center: position,
@@ -29,11 +29,11 @@ async function initMap() {
         stationTag.textContent = station;
 
         const marker = new AdvancedMarkerElement({
-            map: map,
+            map: wx_map,
             position: stations[station],
             content: stationTag,
         });
     }
 }
 
-window.initMap = initMap;
+initMap();
