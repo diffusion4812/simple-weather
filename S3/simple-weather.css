@@ -42,6 +42,10 @@ pre {
   padding-bottom: 10px;
 }
 
+code {
+  white-space: nowrap;
+}
+
 .stations-row {
   display: flex;
   flex-direction: row;
