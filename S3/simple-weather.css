@@ -41,6 +41,10 @@ pre {
   flex: 70%;
 }
 
+#map {
+  height: 100%;
+}
+
 .styled-table {
   border-collapse: collapse;
   margin: 25px 0;
