@@ -19,14 +19,11 @@ async function initMap() {
     wx_map = new Map(document.getElementById("map"), {
         zoom: 9,
         disableDefaultUI: true,
+        gestureHandling: "none",
+        zoomControl: false,
         center: position,
         mapId: "26f1fd542349271f",
     });
-
-    wx_map.addListener("center_changed", () => {
-        console.log(wx_map.getZoom());
-        console.log(wx_map.getCenter().toJSON());
-      });
 
     for (let station in stations) {
         const stationTag = document.createElement("div");
@@ -42,7 +39,7 @@ async function initMap() {
 }
 
 export function wx_tr_click(stationId) {
-    wx_map.setCenter(stations[stationId]);
+    wx_map.panTo(stations[stationId]);
     wx_map.setZoom(12);
 }
 
