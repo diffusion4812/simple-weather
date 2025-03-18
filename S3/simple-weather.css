@@ -30,6 +30,7 @@ p {
   font-size: 1em;
   margin-top: 5px;
   margin-bottom: 5px;
+  padding: 10px;
 }
 
 pre {
@@ -146,7 +147,7 @@ pre {
 
 .api_endpoint_content_header {
   margin: auto;
-  padding: 0px;
+  padding: 10px;
   background-color: #c5c5c5;
   font-size: 1.2em;
   font-weight: bold;
@@ -166,7 +167,6 @@ pre {
 }
 
 .api_endpoint_content_active {
-  padding: 15px;
   border: 1px solid black;
   border-radius: 10px;
 }
