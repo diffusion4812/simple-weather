@@ -23,6 +23,11 @@ async function initMap() {
         mapId: "26f1fd542349271f",
     });
 
+    wx_map.addListener("center_changed", () => {
+        console.log(wx_map.getZoom());
+        console.log(wx_map.getCenter().toJSON());
+      });
+
     for (let station in stations) {
         const stationTag = document.createElement("div");
         stationTag.className = "station-tag";
