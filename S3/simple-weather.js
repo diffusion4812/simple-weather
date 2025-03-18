@@ -41,9 +41,8 @@ async function initMap() {
     }
 }
 
-export function wx_tr_click() {
-    console.log("click");
-    console.log(this);
+export function wx_tr_click(stationId) {
+    console.log(stationId);
 }
 
 initMap();
