@@ -1,3 +1,8 @@
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1*(100vw - 100%));
+}
+
 body {
   margin: 50px;
   margin-top: 25px;
@@ -119,22 +124,6 @@ pre {
   text-align: left;
 }
 
-@media only screen and (max-width: 1000px) {
-  .api_endpoint_collapsible {
-    width: 100%;
-  }
-
-  .stations-row {
-    display: flex;
-    flex-direction: column;
-    height: 60%;
-  }
-
-  .stations-column-table {
-    margin: 0px 0px 50px 0px;
-  }
-}
-
 .api_endpoint_collapsible_active, .api_endpoint_collapsible:hover {
   background-color: #a5a5a5;
 }
@@ -168,12 +157,30 @@ pre {
   padding: 0px;
   background-color: #c5c5c5;
   max-height: 0;
+  overflow-y: hidden;
   overflow-x: auto;
   transition: max-height 0.3s ease-out;
+  width: 70%;
 }
 
 .api_endpoint_content_active {
   padding: 15px;
   border: 1px solid black;
   border-radius: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .api_endpoint_collapsible {
+    width: 100%;
+  }
+
+  .stations-row {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+  }
+
+  .stations-column-table {
+    margin: 0px 0px 50px 0px;
+  }
 }
