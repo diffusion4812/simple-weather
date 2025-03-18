@@ -19,7 +19,7 @@ async function initMap() {
 
   // The map, centered at Uluru
   map = new Map(document.getElementById("map"), {
-    zoom: 10,
+    zoom: 8,
     center: position,
     mapId: "26f1fd542349271f",
   });
