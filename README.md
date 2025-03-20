@@ -51,7 +51,7 @@ After experimentation with several AWS services, a serverless implementation was
 
 
 ## AWS API Gateway
-Four resources have been defined to handle hosting of static content and proper fielding of API requests (through AWS Lambda).
+Four resources are defined to handle hosting of static content and proper fielding of API requests (through AWS Lambda).
 
 ~~~
 /             - Usage webpage
@@ -60,7 +60,7 @@ Four resources have been defined to handle hosting of static content and proper 
 /api/{proxy+} - Weather API
 ~~~
 
-Methods within API Gateway resources are defined to handle **only** GET requests. Requests of any other type will be denied.
+Methods within those API Gateway resources are then configured to handle **only** HTTP GET requests. Requests of any other type will be denied.
 
 ~~~
 /             - GET → AWS integration with S3
@@ -72,18 +72,17 @@ Methods within API Gateway resources are defined to handle **only** GET requests
 <div style="page-break-after: always;"></div>
 
 ## Frontend
-Static HTML content is hosted in an AWS S3 bucket. Because the API Gateway is used to route GET requests to AWS S3, public access to the bucket can remain disabled for enhanced security.
+Static HTML content is hosted in an AWS S3 bucket. As the API Gateway is used to route GET requests directly to AWS S3 (on the cloud side), public access to the bucket can remain disabled for enhanced security.
 
-The Chromium DevTools suite (in Microsoft Edge) was a crucial design aid for debugging, testing and supporting design decisions made as part of the frontend application design.
-
-The webpage features several features aimed at enhancing the user experience and allowing for understanding of the capabilities of the API.
-
+The webpage features several components aimed at enhancing the user experience and allowing for understanding of the capabilities of the API:
 - A list of available weather stations. (Clicking on a row automatically pans/zooms to the station.)
-- Integration of a Google Maps map showing Cornwall and the weather stations located in the area.
+- Integration of a Google Maps map showing Cornwall and weather stations located in the area.
 - A simple introduction to usage of the API including an example request.
 - Expandable (by clicking) API endpoint descriptors detailing:
   - available endpoints,
   - and the JSON information returned (on success/failure).
+
+The Chromium DevTools suite (in Microsoft Edge) was a crucial development aid for debugging, testing and supporting design decisions made as part of the frontend application design.
 
 ## Backend
 Any requests to `/api` endpoints are routed to an AWS Lambda function running Python. This function interacts with a DynamoDB instance containing all available weather data (from all stations).
@@ -97,6 +96,8 @@ An additional benefit of hosting the API backend inside a Lambda function is the
 
 ### DynamoDB
 The DynamoDB instance stores weather data received from weather stations. It is the primary data source for all API endpoints, and is typically queried to receive the latest set of weather data receieved from the selected station.
+
+DynamoDB was chosen over AWS RDS (Relational Database Service) as its serverless nature better supports the dynamic scaling offered by AWS Lambda. Support for more advanced querying was not required for the simple weather service application. 
 
 <div style="page-break-after: always;"></div>
 
@@ -118,6 +119,8 @@ As the collation of live weather data was not feasible, an AWS Lambda utility fu
 
 ### Weather Stations
 Weather stations are currently hard-coded in the frontend and backend applications. This could become difficult to maintain if the quantity of data-providers is expected to change.
+
+Better validation of user input is also required. Requests for weather stations that do not exist will crash the application. (It is wrongly assumed that users will only request weather stations listed in the usage table.)
 
 ### Database Edge Cases
 Currently, API requests with empty database tables are likely to crash the application (AWS Lambda function). Checks should be added to ensure the validity and existence of data in database tables.
