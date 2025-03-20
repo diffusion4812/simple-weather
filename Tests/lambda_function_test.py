@@ -5,7 +5,7 @@ class TestLambdaHandler(unittest.TestCase):
     def test_valid_query_parameters(self):
         event = {
             'path': '/api/temperature',
-            'queryStringParameters': {'lon': '10', 'lat': '20'}
+            'queryStringParameters': {'station_id': 'SILJ'}
         }
         context = {}
         response = lambda_handler(event, context)
@@ -20,12 +20,12 @@ class TestLambdaHandler(unittest.TestCase):
         context = {}
         response = lambda_handler(event, context)
         self.assertEqual(response['statusCode'], 400)
-        self.assertIn('no query parameters provided', response['body'])
+        self.assertIn('valid station ID required', response['body'])
 
     def test_invalid_endpoint(self):
         event = {
             'path': '/api/unknown',
-            'queryStringParameters': {'lon': '10', 'lat': '20'}
+            'queryStringParameters': {'station_id': 'SILJ'}
         }
         context = {}
         response = lambda_handler(event, context)
