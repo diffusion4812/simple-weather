@@ -1,0 +1,14 @@
+{
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/aws-deploy.yml"
+    ],
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./Tests",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
+}
