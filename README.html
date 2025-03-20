@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Simple Weather</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <style>
+  p:has(+ ul), h4:has(+ ul) {
+    margin-bottom: 0.2em;
+  }
+
+  h4 + ul {
+    margin-top: 0.2em;
+  }
+
+  p {
+    text-align: justify
+  }
+
+  img {
+      display: block;
+      margin: auto;
+  }
+</style>
+<h1 id="simple-weather">Simple Weather</h1>
+<p>A weather service hosted on AWS serving users with static and dynamic content.<br>
+<a href="https://wp71kyut29.execute-api.eu-west-2.amazonaws.com/prod">https://wp71kyut29.execute-api.eu-west-2.amazonaws.com/prod</a></p>
+<p><img src="file:///c:\Users\LOAR02\Source\simple-weather-1\Usage.jpeg"/></p>
+<p>Requests made to an appropriate API endpoint result in a 200 response code with the requested data:
+<img src="file:///c:\Users\LOAR02\Source\simple-weather-1\200_windspeed_result.png"/></p>
+<p>...or a 400 response code and failure message with additional debug information:
+<img src="file:///c:\Users\LOAR02\Source\simple-weather-1\400_windspeed_result.png"/></p>
+<div style="page-break-after: always;"></div>
+<h2 id="introduction">Introduction</h2>
+<p>After experimentation with several AWS services, a serverless implementation was selected based on:</p>
+<ul>
+<li>AWS API Gateway</li>
+<li>AWS S3</li>
+<li>AWS Lambda</li>
+</ul>
+<h4 id="aws-api-gateway">AWS API Gateway</h4>
+<ul>
+<li>Handles access requests (is the main URL for client requests), routing them to the appropriate AWS service.</li>
+<li>Manages rate limiting and throttling.</li>
+<li>Enables deployment of muiltiple stages with authentication features for development builds.</li>
+</ul>
+<h4 id="aws-s3">AWS S3</h4>
+<ul>
+<li>Hosts static content like HTML, CSS and JavaScript.</li>
+</ul>
+<h4 id="aws-lambda">AWS Lambda</h4>
+<ul>
+<li>Handles and interprets API access requests.</li>
+<li>Formats and returns requested information to clients.</li>
+</ul>
+<h2 id="aws-api-gateway-1">AWS API Gateway</h2>
+<p>Four resources have been defined to handle hosting of static content and proper fielding of API requests (through AWS Lambda).</p>
+<pre><code>/             - Usage webpage
+/{proxy+}     - Usage webpage (supporting files)
+/api          - API root (redirects to usage webpage)
+/api/{proxy+} - Weather API
+</code></pre>
+<p>Methods within API Gateway resources are defined to handle <strong>only</strong> GET requests. Requests of any other type will be denied.</p>
+<pre><code>/             - GET → AWS integration with S3
+/{proxy+}     - GET → AWS integration with S3
+/api          - GET → Mock integration (internal)
+/api/{proxy+} - GET → Lambda integration
+</code></pre>
+<div style="page-break-after: always;"></div>
+<h2 id="frontend">Frontend</h2>
+<p>Static HTML content is hosted in an AWS S3 bucket. Because the API Gateway is used to route GET requests to AWS S3, public access to the bucket can remain disabled for enhanced security.</p>
+<p>The Chromium DevTools suite (in Microsoft Edge) was a crucial design aid for debugging, testing and supporting design decisions made as part of the frontend application design.</p>
+<p>The webpage features several features aimed at enhancing the user experience and allowing for understanding of the capabilities of the API.</p>
+<ul>
+<li>A list of available weather stations. (Clicking on a row automatically pans/zooms to the station.)</li>
+<li>Integration of a Google Maps map showing Cornwall and the weather stations located in the area.</li>
+<li>A simple introduction to usage of the API including an example request.</li>
+<li>Expandable (by clicking) API endpoint descriptors detailing:
+<ul>
+<li>available endpoints,</li>
+<li>and the JSON information returned (on success/failure).</li>
+</ul>
+</li>
+</ul>
+<h2 id="backend">Backend</h2>
+<p>Any requests to <code>/api</code> endpoints are routed to an AWS Lambda function running Python. This function interacts with a DynamoDB instance containing all available weather data (from all stations).</p>
+<h3 id="aws-lambda-1">AWS Lambda</h3>
+<p>An AWS Lambda function serves as the backend compute layer and content provider for the API. Requests are processed by the function where validation of user input is carried out alongside handling of success and failure responses.</p>
+<p>The JSON response for successful requests send to valid API endpoints is formed and returned in the Lambda function.</p>
+<p>An additional benefit of hosting the API backend inside a Lambda function is the automatic parsing of headers and request content. In traditional hosting setups, the responsibility for handling the complete request can result in additional security risks being taken on by the developer.</p>
+<h3 id="dynamodb">DynamoDB</h3>
+<p>The DynamoDB instance stores weather data received from weather stations. It is the primary data source for all API endpoints, and is typically queried to receive the latest set of weather data receieved from the selected station.</p>
+<div style="page-break-after: always;"></div>
+<h2 id="testing">Testing</h2>
+<p>Testing took the form of several guises during project development. The combination of several test components helped to minimise the risk of publishing broken/breaking changes to the AWS environment.</p>
+<h3 id="local-hosting">Local Hosting</h3>
+<p>Compared to running applications locally, cloud hosting introduces additional delays related to uploads and any requirement for the re-provisioning of application resources.</p>
+<p>To mitigate any related delays, early development iterations were first run in a local Python instance acting as a sandbox/testbed to prove changes before publication.</p>
+<h3 id="automated-testing">Automated Testing</h3>
+<p>Several test scripts were prepared to carry out automatic testing of application functionality using Python's <code>unittest</code> testing framework. Automated tests were run before committing changes to the codebase or publishing updates to AWS.</p>
+<h3 id="data-synthesizing">Data Synthesizing</h3>
+<p>As the collation of live weather data was not feasible, an AWS Lambda utility function was created to populate the DynamoDB <code>wx-serv-data</code> table with synthetic data. It was important to test the application with a range of database states.</p>
+<h2 id="future-improvements-and-known-issues">Future Improvements and Known Issues</h2>
+<h3 id="weather-stations">Weather Stations</h3>
+<p>Weather stations are currently hard-coded in the frontend and backend applications. This could become difficult to maintain if the quantity of data-providers is expected to change.</p>
+<h3 id="database-edge-cases">Database Edge Cases</h3>
+<p>Currently, API requests with empty database tables are likely to crash the application (AWS Lambda function). Checks should be added to ensure the validity and existence of data in database tables.</p>
+<h3 id="adaptive-css">Adaptive CSS</h3>
+<p>Although some effort has been made to optimise the frontend experience for various devices, further scope could be given to refining the user experience to support a wider range of device scenarios.</p>
+
+            
+            
+        </body>
+        </html>
