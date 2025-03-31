@@ -17,7 +17,7 @@
   }
 </style>
 
-# Simple Weather
+# Simple Weather Service
 A weather service hosted on AWS serving users with static and dynamic content.<br>
 https://wp71kyut29.execute-api.eu-west-2.amazonaws.com/prod
 
